@@ -144,7 +144,7 @@ async def process_search(message):
             
             else:
                 # Extract search keyword from message content
-                search_keyword = message_content.split('', maxsplit=1)[1].lower()
+                search_keyword = message_content.lower()
                 channel_name = f"{search_keyword}-jobs"
 
                 # Check if channel already exists
@@ -159,10 +159,10 @@ async def process_search(message):
                 await target_channel.send(embed=embed)
                 
                 
-            await message.channel.send(embed=embed)
+            # await message.channel.send(embed=embed)  # Removed to prevent duplicate sends
 
 
-            thread = await message.channel.create_thread(
+            thread = await target_channel.create_thread(
                 name=f"Job: {job['title'][:95]}",
                 auto_archive_duration=60
                 )
