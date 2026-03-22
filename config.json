@@ -1,0 +1,23 @@
+
+{
+"listed_channels": [
+{
+"url": "python",
+"id": 1478704706363719863,
+"label": "Python Jobs"
+},
+
+{
+"url": "web scrapping",
+"id": 1478715155109117972,
+"label": "Web Scrapping Jobs"
+}, 
+
+{
+"url": "general",
+"id": 1476097927704350732,
+"label": "General"
+}
+
+]
+}
