@@ -82,7 +82,7 @@ async def process_search(message):
 
         elif message.channel.id == channels_data[1]['id']:
             # use the same pattern for the scraping channel
-            if 'scraping' in message.content.lower():
+            if 'scraping' or 'scrapping' in message.content.lower():
                 message_content = message.content.split(" ", maxsplit=1)[1]
             else:
                 print('Scraping word not found try again with better search')
@@ -136,15 +136,17 @@ async def process_search(message):
             
             if 'python' in message_content:
                 target_channel = client.get_channel(channels_data[0]['id'])
-                await target_channel.send(embed=embed)
 
             elif 'scraping' in message_content:
                 target_channel = client.get_channel(channels_data[1]['id'])
-                await target_channel.send(embed=embed)
             
             else:
                 # Extract search keyword from message content
-                search_keyword = message_content.lower()
+                search_keyword = message_content.strip().lower()
+                if not search_keyword:
+                    await message.channel.send('Please include a search keyword (e.g. python, java) after the bot mention.')
+                    continue
+
                 channel_name = f"{search_keyword}-jobs"
 
                 # Check if channel already exists
@@ -156,11 +158,7 @@ async def process_search(message):
                     # Create new channel if it doesn't exist
                     target_channel = await message.guild.create_text_channel(channel_name)
 
-                await target_channel.send(embed=embed)
-                
-                
-            # await message.channel.send(embed=embed)  # Removed to prevent duplicate sends
-
+            await target_channel.send(embed=embed)
 
             thread = await target_channel.create_thread(
                 name=f"Job: {job['title'][:95]}",
