@@ -20,6 +20,3 @@ def get_cookies(jobQuery):
     with open("cookies.json", "w") as file:
         json.dump(loaded_cookies, file, indent=4)
 
-
-MTQ3NjA5NzQ0MTc4MTY0OTUxMA.Gb3vXx.Ef8E8FCDiHBZNZhjIzZeNCDc6r_ZgEBMzd8KJ0
-MTQ3NjA5NzQ0MTc4MTY0OTUxMA.GsaUqT.oLGS-k-VuJUYy3Q9n5lwH4D2_UJkyr0A637eLk
