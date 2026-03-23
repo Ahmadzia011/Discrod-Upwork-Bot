@@ -19,4 +19,3 @@ def get_cookies(jobQuery):
         loaded_cookies = {c['name']: c['value'] for c in cookies}        
     with open("cookies.json", "w") as file:
         json.dump(loaded_cookies, file, indent=4)
-
